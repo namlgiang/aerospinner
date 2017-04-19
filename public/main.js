@@ -16,8 +16,8 @@ $(document).ready(function() {
   if(thisTime - lastTime > 1000 * 60 * 60 * 18)
     document.cookie = "time=" + (new Date()).getTime();
   else {
-    if(thisTime - lastTime > 180000) _ = ___;
     if(thisTime - lastTime > 60000) _ = __;
+    if(thisTime - lastTime > 180000) _ = ___;
   }
 
   $(".pcolor li").click(function() {
