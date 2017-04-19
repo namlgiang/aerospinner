@@ -13,8 +13,12 @@ $(document).ready(function() {
   var lastTime = parseInt(document.cookie.split("=")[1]);
   var thisTime = (new Date()).getTime();
 
-  if(thisTime - lastTime > 60000) _ = __;
-  if(thisTime - lastTime > 180000) _ = ___;
+  if(thisTime - lastTime > 1000 * 60 * 60 * 18)
+    document.cookie = "time=" + (new Date()).getTime();
+  else {
+    if(thisTime - lastTime > 180000) _ = ___;
+    if(thisTime - lastTime > 60000) _ = __;
+  }
 
   $(".pcolor li").click(function() {
     // console.log($(this).index(".pcolor li"));
