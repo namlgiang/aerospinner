@@ -113,7 +113,7 @@ paypal.Button.render({
         // Optional: display a confirmation page here
 
         return actions.payment.execute().then(function() {
-            // Show a success page to the buyer
+            window.location.href = "/thankyou/";
         });
     },
 
