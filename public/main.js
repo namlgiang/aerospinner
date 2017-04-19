@@ -93,7 +93,7 @@ paypal.Button.render({
         var env    = this.props.env;
         var client = this.props.client;
 
-        ga('send', 'pageview', 'InitiateCheckout');
+        ga('send', 'event', 'Purchase ' + colorName[color], quantity);
         console.log('InitiateCheckout');
         return paypal.rest.payment.create(env, client, {
             transactions: [
