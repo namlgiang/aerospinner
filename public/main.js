@@ -32,7 +32,7 @@ $(document).ready(function() {
 
   $(".quantity").keyup(function() {
     if($(this).val() < 1) $(this).val(1);
-    if($(this).val() > 999) $(this).val(999);
+    if($(this).val() > _[color]) $(this).val(_[color]);
     quantity = $(this).val();
   });
 
