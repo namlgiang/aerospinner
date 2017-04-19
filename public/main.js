@@ -52,6 +52,10 @@ $(document).ready(function() {
     $("html, body").animate({scrollTop: $( $(this).attr("scrollData") ).offset().top - 60}, 500);
   });
 
+  $(".ordernow").click(function() {
+    $("html, body").animate({scrollTop: $(".p4").offset().top - 60}, 500);
+  });
+
   $(".instock").text(_[0] + " in stock");
 
 });
