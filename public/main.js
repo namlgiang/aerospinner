@@ -93,6 +93,8 @@ paypal.Button.render({
         var env    = this.props.env;
         var client = this.props.client;
 
+        ga('send', 'pageview', 'InitiateCheckout');
+        console.log('InitiateCheckout');
         return paypal.rest.payment.create(env, client, {
             transactions: [
               {
@@ -120,8 +122,6 @@ paypal.Button.render({
     onAuthorize: function(data, actions) {
 
         // Optional: display a confirmation page here
-        ga('send', 'pageview', 'InitiateCheckout');
-        console.log('InitiateCheckout');
 
         return actions.payment.execute().then(function() {
             window.location.href = "/thankyou/";
