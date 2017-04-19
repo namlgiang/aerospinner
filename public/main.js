@@ -10,6 +10,12 @@ $(document).ready(function() {
   if(document.cookie == "")
     document.cookie = "time=" + (new Date()).getTime();
 
+  var lastTime = parseInt(document.cookie.split("=")[1]);
+  var thisTime = (new Date()).getTime();
+
+  if(thisTime - lastTime > 60000) _ = __;
+  if(thisTime - lastTime > 180000) _ = ___;
+
   $(".pcolor li").click(function() {
     // console.log($(this).index(".pcolor li"));
     color = $(this).index(".pcolor li");
@@ -34,7 +40,7 @@ $(document).ready(function() {
 
   renderMenu();
   $(window).scroll(function() {
-    console.log($("body").scrollTop());
+    // console.log($("body").scrollTop());
     renderMenu();
   });
 
