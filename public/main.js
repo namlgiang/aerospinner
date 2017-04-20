@@ -54,7 +54,7 @@ $(document).ready(function() {
 
   renderMenu();
   $(window).scroll(function() {
-    // console.log($("body").scrollTop());
+    console.log($("body").scrollTop());
     renderMenu();
   });
 
@@ -73,9 +73,10 @@ $(document).ready(function() {
 function renderMenu() {
   var top = $("body").scrollTop();
   var m = 0;
-  if(top > 350) m=1;
-  if(top > 850) m=2;
-  if(top > 1800) m=3;
+  if(top > 250) m=1;
+  if(top > 750) m=2;
+  if(top > 1250) m=3;
+  if(top > 1800) m=4;
   $(".menu span").removeClass("active");
   $(".menu span:eq("+m+")").addClass("active");
 }
