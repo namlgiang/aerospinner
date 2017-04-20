@@ -8,23 +8,29 @@ body {
 
 .p0 {
   width: 1000px;
+  height: 500px;
   margin: 0 auto;
   max-width: 100%;
   overflow: hidden;
-  background: url("img/f1.png") center no-repeat;
+  background: url("img/f1.png") center right no-repeat;
   background-size: contain;
+  position: relative;
 
   img {
-    float: left;
-    width: 30%;
-    max-width: 400px;
-    margin: 10%;
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50%;
+    max-width: 500px;
   }
 
   .content {
-    float: left;
-    width: 30%;
-    margin-top: 70px;
+    position: absolute;
+    right: 5%;
+    width: 40%;
+    top: 50%;
+    transform: translateY(-50%);
     box-sizing: border-box;
     padding: 30px;
 
