@@ -7,6 +7,11 @@ ga('create', 'UA-44699912-31', 'auto');
 ga('require', 'displayfeatures');
 ga('send', 'pageview');
 
+fbq('track', 'ViewContent', {
+value: 18.99,
+currency: 'USD'
+});
+
 var color = 0;
 var quantity = 1;
 var colorName = ["Silver", "Rose Gold", "Spring", "Midnight", "Ocean"];
@@ -96,7 +101,9 @@ paypal.Button.render({
         var client = this.props.client;
 
         ga('send', 'event', 'Purchase ' + colorName[color], quantity);
+        fbq('track', 'InitiateCheckout');
         console.log('InitiateCheckout');
+
         return paypal.rest.payment.create(env, client, {
             transactions: [
               {
@@ -126,8 +133,13 @@ paypal.Button.render({
         // Optional: display a confirmation page here
 
         return actions.payment.execute().then(function() {
+            fbq('track', 'Purchase', {
+              value: 18.99*quantity,
+              currency: 'USD'
+            });
             window.location.href = "/thankyou/";
         });
+
     },
 
     style: {
