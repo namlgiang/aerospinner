@@ -37,6 +37,7 @@ $(document).ready(function() {
     $(".preview .imgs").css("top", -color*100 + "%");
     $(".textcrop ul").css("top", -color*100 + "%");
     $(".instock").text(_[color] + " in stock");
+    $(".quantity").change();
   });
 
   $(".quantity").keyup(function() {
