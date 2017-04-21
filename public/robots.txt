@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://aerospinner.com/sitemap.xml
