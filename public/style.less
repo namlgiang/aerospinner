@@ -12,7 +12,7 @@ body {
   margin: 0 auto;
   max-width: 100%;
   overflow: hidden;
-  background: url("img/f1.png") center right no-repeat;
+  background: url("img/f1.png") top right no-repeat;
   background-size: contain;
   position: relative;
 
@@ -171,6 +171,9 @@ body {
     position: relative;
     z-index: 2;
   }
+  iframe {
+    max-width: 100%;
+  }
 }
 .p3::before {
   content: "";
@@ -200,6 +203,13 @@ body {
       font-size: 16px;
       color: #ff1749;
       margin-top: 20px;
+
+      span:not(:last-of-type) {
+        display: inline-block;
+        border-right: 1px solid #ff1749;
+        padding-right: 10px;
+        margin-right: 10px;
+      }
     }
   }
 
@@ -431,4 +441,116 @@ body {
 @-webkit-keyframes rotation {
   0%   { transform: rotateZ(0deg); }
   100% { transform: rotateZ(360deg); }
+}
+
+
+/* MOBILE * MOBILE * MOBILE * MOBILE * MOBILE * MOBILE */
+
+
+@media (max-aspect-ratio: 1/1) {
+
+      .menu {
+        display: none;
+      }
+
+      .p0 {
+        height: auto;
+        text-align: center;
+        img {
+          width: 100%;
+          transform: none;
+          position: static;
+          display: block;
+          max-width: none;
+        }
+        .content {
+          position: static;
+          transform: none;
+          width: 100%;
+          margin-top: -50px;
+
+          .desc {
+            font-size: 14px;
+          }
+        }
+
+      }
+
+      .p1 {
+        .c0 {
+          width: 100%;
+          height: 300px;
+          .spin {
+            width: 250px;
+            height: 250px;
+          }
+        }
+        .c1 {
+          width: 100%;
+          height: auto;
+        }
+        .c1 .desc {
+          font-size: 13px;
+        }
+      }
+
+      .p2 {
+        display: none;
+      }
+
+      .p3 {
+        background: #fff;
+        color: #ff1749;
+      }
+
+      .p3:before {
+        display: none;
+      }
+
+      .p4 {
+        padding-bottom: 0;
+        .title {
+          margin: 0;
+          .desc {
+            font-size: 13px;
+            span:not(:last-of-type) {
+              display: block;
+              border-right: none;
+              padding-right: 0;
+              margin-right: 0;
+            }
+          }
+        }
+
+        .preview {
+          width: 100%;
+          .imgs {
+            right: 50%;
+            transform: translateX(50%);
+          }
+        }
+
+        .detail {
+          padding-top: 0;
+          padding: 0 10% 50px 10%;
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      .p5 {
+        display: none;
+      }
+
+      .ordernow {
+        bottom: 0;
+        right: 0;
+      }
+
+      .footer {
+        .right {
+          margin-top: 30px;
+        }
+      }
+
 }
