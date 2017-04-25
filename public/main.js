@@ -73,6 +73,8 @@ $(document).ready(function() {
 
   $(".instock").text(_[0] + " in stock");
 
+  var el = window.location.href.match(/goto=[^&]*/g)[0].replace('goto=', '');
+  $("html, body").animate({scrollTop: $(el).offset().top - 60}, 500);
 });
 
 function renderMenu() {
