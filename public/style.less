@@ -196,21 +196,43 @@ body {
 
   .title {
     text-align: center;
-    font-size: 40px;
     margin: 50px;
 
-    .desc {
-      font-size: 16px;
-      color: #ff1749;
-      margin-top: 20px;
-
-      span:not(:last-of-type) {
-        display: inline-block;
-        border-right: 1px solid #ff1749;
-        padding-right: 10px;
-        margin-right: 10px;
-      }
+    .ended {
+      font-size: 14px;
     }
+
+    .ended::after {
+      content: "";
+      display: block;
+      background: url(img/line0.png);
+      width: 10px;
+      height: 34px;
+      margin: 0 auto;
+    }
+
+    .ongoing {
+      background: #ff1749;
+      color: #fff;
+      display: inline-block;
+      font-size: 24px;
+      padding: 10px 40px;
+      border-radius: 100px;
+
+      .desc {
+        font-size: 14px;
+        margin: 10px;
+
+        span:not(:last-of-type) {
+          display: inline-block;
+          border-right: 1px solid #fff;
+          padding-right: 10px;
+          margin-right: 10px;
+        }
+      }
+
+    }
+
   }
 
   .preview {
