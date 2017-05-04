@@ -8,7 +8,7 @@ ga('require', 'displayfeatures');
 ga('send', 'pageview');
 
 fbq('track', 'ViewContent', {
-value: 26.59,
+value: 22.80,
 currency: 'USD'
 });
 
@@ -110,7 +110,7 @@ paypal.Button.render({
             transactions: [
               {
                 amount: {
-                  total: quantity * 26.59,
+                  total: quantity * 22.80,
                   currency: 'USD'
                 },
                 item_list: {
@@ -118,7 +118,7 @@ paypal.Button.render({
                     {
                     "name": colorName[color],
                     "quantity": quantity,
-                    "price": 26.59,
+                    "price": 22.80,
                     "currency": "USD"
                     }
                   ]
@@ -136,7 +136,7 @@ paypal.Button.render({
 
         return actions.payment.execute().then(function() {
             fbq('track', 'Purchase', {
-              value: 26.59*quantity,
+              value: 22.80*quantity,
               currency: 'USD'
             });
             window.location.href = "/thankyou/";
