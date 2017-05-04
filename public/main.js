@@ -15,9 +15,9 @@ currency: 'USD'
 var color = 0;
 var quantity = 1;
 var colorName = ["Silver", "Rose Gold", "Spring", "Midnight", "Ocean"];
-var _ = [21,15,33,25,34];
-var __ = [17,10,22,14,24];
-var ___ = [3,4,2,4,7];
+var _ = [43,24,67,41,49];
+var __ = [37,15,44,21,38];
+var ___ = [6,5,2,9,12];
 
 $(document).ready(function() {
 
