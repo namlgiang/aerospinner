@@ -37,6 +37,9 @@ $(document).ready(function() {
   $(".pcolor li").click(function() {
     // console.log($(this).index(".pcolor li"));
     color = $(this).index(".pcolor li");
+
+    ga('send', 'event', 'Select ' + colorName[color]);
+
     $(".pcolor li").removeClass("active");
     $(this).addClass("active");
     $(".preview .imgs").css("top", -color*100 + "%");
