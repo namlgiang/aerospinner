@@ -66,7 +66,7 @@ $(document).ready(function() {
     // console.log($(this).index(".pcolor li"));
     color = $(this).index(".pcolor li");
 
-    ga('send', 'event', 'Select ' + colorName[color]);
+    ga('send', 'event', 'Select ' + colorName[color], 1);
 
     $(".pcolor li").removeClass("active");
     $(this).addClass("active");
