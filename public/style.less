@@ -397,6 +397,9 @@ body {
       li {
         display: inline-block;
         padding: 0 20px;
+        img {
+          margin: 0;
+        }
       }
       li:not(:last-of-type) {
         border-right: 1px solid #ff1749;
@@ -596,7 +599,19 @@ body {
       }
 
       .p5 {
-        display: none;
+        .guarantee ul {
+          padding: 20px;
+        }
+
+        li {
+          width: 30%;
+          box-sizing: border-box;
+
+          img {
+            width: 100%;
+            margin: 0;
+          }
+        }
       }
 
       .ordernow {
