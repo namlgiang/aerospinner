@@ -18,6 +18,14 @@ var colorName = ["Silver", "Rose Gold", "Spring", "Midnight", "Ocean"];
 var _ = [43,24,67,41,49];
 var __ = [37,15,44,21,38];
 var ___ = [6,5,2,9,12];
+var cd = 1000 * 60 * 60 * 18;
+
+function showTime(cd) {
+  $(".day").html(Math.floor(cd/1000/60/60/24));
+  $(".hour").html(Math.floor(cd/1000/60/60%24));
+  $(".minute").html(Math.floor(cd/1000/60%60));
+  $(".second").html(Math.floor(cd/1000%60));
+}
 
 $(document).ready(function() {
 
@@ -27,12 +35,23 @@ $(document).ready(function() {
   var lastTime = parseInt(document.cookie.split("=")[1]);
   var thisTime = (new Date()).getTime();
 
-  if(thisTime - lastTime > 1000 * 60 * 60 * 18)
+  if(thisTime - lastTime > 1000 * 60 * 60 * 18 - 1000 * 60 * 24) {
     document.cookie = "time=" + (new Date()).getTime();
+    lastTime = thisTime;
+  }
   else {
     if(thisTime - lastTime > 60000) _ = __;
     if(thisTime - lastTime > 180000) _ = ___;
   }
+
+  cd = 1000 * 60 * 60 * 18 - 1000 * 60 * 24 - (thisTime - lastTime);
+  showTime(cd);
+  // lastTime = thisTime;//Test
+  setInterval(function(lastTime) {
+    var thisTime = (new Date()).getTime();
+    cd = 1000 * 60 * 60 * 18 - 1000 * 60 * 24 - (thisTime - lastTime);
+    showTime(cd);
+  }, 1000, lastTime);
 
   $(".pcolor li").click(function() {
     // console.log($(this).index(".pcolor li"));
