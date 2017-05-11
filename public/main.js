@@ -21,10 +21,18 @@ var ___ = [6,5,2,9,12];
 var cd = 1000 * 60 * 60 * 18;
 
 function showTime(cd) {
-  $(".day").html(Math.floor(cd/1000/60/60/24));
-  $(".hour").html(Math.floor(cd/1000/60/60%24));
-  $(".minute").html(Math.floor(cd/1000/60%60));
-  $(".second").html(Math.floor(cd/1000%60));
+  var day = Math.floor(cd/1000/60/60/24);
+  if(day < 10) day = '0' + day;
+  $(".day").html(day);
+  var hour = Math.floor(cd/1000/60/60%24);
+  if(hour < 10) hour = '0' + hour;
+  $(".hour").html(hour);
+  var minute = Math.floor(cd/1000/60%60);
+  if(minute < 10) minute = '0' + minute;
+  $(".minute").html(minute);
+  var second = Math.floor(cd/1000%60);
+  if(second < 10) second = '0' + second;
+  $(".second").html(second);
 }
 
 $(document).ready(function() {
