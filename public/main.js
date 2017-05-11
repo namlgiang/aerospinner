@@ -42,6 +42,8 @@ $(document).ready(function() {
 
   var lastTime = parseInt(document.cookie.split("=")[1]);
   var thisTime = (new Date()).getTime();
+  if(isNaN(lastTime))
+    lastTime = thisTime;
 
   if(thisTime - lastTime > 1000 * 60 * 60 * 18 - 1000 * 60 * 24) {
     document.cookie = "time=" + (new Date()).getTime();
@@ -54,7 +56,6 @@ $(document).ready(function() {
 
   cd = 1000 * 60 * 60 * 18 - 1000 * 60 * 24 - (thisTime - lastTime);
   showTime(cd);
-  // lastTime = thisTime;//Test
   setInterval(function(lastTime) {
     var thisTime = (new Date()).getTime();
     cd = 1000 * 60 * 60 * 18 - 1000 * 60 * 24 - (thisTime - lastTime);
