@@ -50,8 +50,8 @@ $(document).ready(function() {
     lastTime = thisTime;
   }
   else {
-    if(thisTime - lastTime > 60000) _ = __;
-    if(thisTime - lastTime > 180000) _ = ___;
+    if(thisTime - lastTime > 30000) _ = __;
+    if(thisTime - lastTime > 600000) _ = ___;
   }
 
   cd = 1000 * 60 * 60 * 18 - 1000 * 60 * 24 - (thisTime - lastTime);
