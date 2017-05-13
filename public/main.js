@@ -121,7 +121,7 @@ function renderMenu() {
 
 paypal.Button.render({
 
-    env: 'production', // Optional: specify 'sandbox' environment
+    env: 'sandbox', // Optional: specify 'sandbox' environment
 
     client: {
         sandbox:    'AeeQuc30epxndsZcys556s8BUccDPn7iphKvcVdJGRxEufT_J27f21i5YMLWZjiBEfNC23G5sA_fwvDr',
@@ -141,7 +141,7 @@ paypal.Button.render({
             transactions: [
               {
                 amount: {
-                  total: quantity * 22.80,
+                  total: Math.round(quantity * 22.80 * 100)/100,
                   currency: 'USD'
                 },
                 item_list: {
@@ -177,6 +177,10 @@ paypal.Button.render({
 
     style: {
       size: 'medium'
+    },
+
+    onError: function(err) {
+        ga('send', 'event', 'error: ' + err, quantity);
     }
 
 }, '#paypal-button');
