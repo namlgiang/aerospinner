@@ -95,7 +95,7 @@ function calcTotal() {
       "currency": "USD"
       }
     ];
-    $(".total").text("Total: $" + _total);
+    $(".total").text("Total: $" + _total + " (You save $"+  Math.round((quantity*price - _total)*100)/100  +")");
   }
 }
 
