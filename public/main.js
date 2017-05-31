@@ -67,7 +67,7 @@ function calcTotal() {
     $(".total").text("Total: $" + _total);
   }
   else if(_promotion == 1) {
-    _total = price + Math.round( (quantity-1) * 15.20 ) * 100)/100;
+    _total = Math.round((price + (quantity-1) * 15.20 ) * 100)/100;
     _items = [
       {
       "name": colorName[color],
