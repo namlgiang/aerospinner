@@ -7,11 +7,6 @@ ga('create', 'UA-44699912-31', 'auto');
 ga('require', 'displayfeatures');
 ga('send', 'pageview');
 
-fbq('track', 'ViewContent', {
-value: 22.80,
-currency: 'USD'
-});
-
 var color = 0;
 var quantity = 1;
 var colorName = ["Silver", "Rose Gold", "Spring", "Midnight", "Ocean"];
@@ -19,6 +14,72 @@ var _ = [43,24,67,41,49];
 var __ = [37,15,44,21,38];
 var ___ = [6,5,2,9,12];
 var cd = 1000 * 60 * 60 * 18;
+var price = 37.99;
+
+fbq('track', 'ViewContent', {
+value: price,
+currency: 'USD'
+});
+
+var _total = 37.99;
+var _promotion = 0;
+var _items = [
+  {
+  "name": colorName[color],
+  "quantity": quantity,
+  "price": price,
+  "currency": "USD"
+  }
+];
+
+function applyCoupon() {
+  $.get('/coupon/' + $(".coupon-text").val().toUpperCase(), function(data) {
+    if(data == 1) {
+      $(".coupon-note").removeClass("error").text("Save 60% OFF from the second item!")
+      _promotion = 1;
+      calcTotal();
+    }
+    else {
+      $(".coupon-note").addClass("error").text("Coupon Code does not exist.")
+      _promotion = 0;
+      calcTotal();
+    }
+  });
+}
+
+function calcTotal() {
+  if(_promotion == 0) {
+    _total = Math.round(quantity * price * 100)/100;
+    _items = [
+      {
+      "name": colorName[color],
+      "quantity": quantity,
+      "price": price,
+      "currency": "USD"
+      }
+    ];
+    $(".total").text("Total: $" + _total);
+  }
+  else {
+    _total = Math.round((price + (quantity-1) * 15.20 ) * 100)/100;
+    _items = [
+      {
+      "name": colorName[color],
+      "quantity": 1,
+      "price": price,
+      "currency": "USD"
+      }
+    ];
+    if(quantity > 1)
+    _items.push({
+      "name": colorName[color],
+      "quantity": quantity-1,
+      "price": 15.20,
+      "currency": "USD"
+    });
+    $(".total").text("Total: $" + _total + " (You save $"+  Math.round((quantity*price - _total)*100)/100  +")");
+  }
+}
 
 function showTime(cd) {
   var day = Math.floor(cd/1000/60/60/24);
@@ -74,23 +135,27 @@ $(document).ready(function() {
     $(".textcrop ul").css("top", -color*100 + "%");
     $(".instock").text(_[color] + " in stock");
     $(".quantity").change();
+    calcTotal();
   });
 
   $(".quantity").keyup(function() {
     if($(this).val() < 1) $(this).val(1);
     if($(this).val() > _[color]) $(this).val(_[color]);
     quantity = $(this).val();
+    calcTotal();
   });
 
   $(".quantity").change(function() {
     if($(this).val() < 1) $(this).val(1);
     if($(this).val() > _[color]) $(this).val(_[color]);
     quantity = $(this).val();
+    calcTotal();
   });
+  calcTotal();
 
   renderMenu();
   $(window).scroll(function() {
-    console.log($("body").scrollTop());
+    // console.log($("body").scrollTop());
     renderMenu();
   });
 
@@ -104,8 +169,19 @@ $(document).ready(function() {
 
   $(".instock").text(_[0] + " in stock");
 
-  var el = window.location.href.match(/goto=[^&]*/g)[0].replace('goto=', '');
-  $("html, body").delay(500).animate({scrollTop: $(el).offset().top - 60}, 500);
+  var el = window.location.href.match(/goto=[^&]*/g);
+  if(el!=null) {
+    el = el[0].replace('goto=', '');
+    $("html, body").delay(500).animate({scrollTop: $(el).offset().top - 60}, 500);
+  }
+
+  $(".apply").click(function() {
+    applyCoupon();
+  });
+  $(".coupon-text").keydown(function (e) {
+    if(e.keyCode == 13)
+      applyCoupon();
+  });
 });
 
 function renderMenu() {
@@ -121,7 +197,7 @@ function renderMenu() {
 
 paypal.Button.render({
 
-    env: 'production', // Optional: specify 'sandbox' environment
+    env: 'sandbox', // Optional: specify 'sandbox' environment
 
     client: {
         sandbox:    'AeeQuc30epxndsZcys556s8BUccDPn7iphKvcVdJGRxEufT_J27f21i5YMLWZjiBEfNC23G5sA_fwvDr',
@@ -141,18 +217,11 @@ paypal.Button.render({
             transactions: [
               {
                 amount: {
-                  total: Math.round(quantity * 22.80 * 100)/100,
+                  total: _total,
                   currency: 'USD'
                 },
                 item_list: {
-                  items: [
-                    {
-                    "name": colorName[color],
-                    "quantity": quantity,
-                    "price": 22.80,
-                    "currency": "USD"
-                    }
-                  ]
+                  items: _items
                 }
               }
             ]
@@ -167,7 +236,7 @@ paypal.Button.render({
 
         return actions.payment.execute().then(function() {
             fbq('track', 'Purchase', {
-              value: 22.80*quantity,
+              value: price*quantity,
               currency: 'USD'
             });
             window.location.href = "/thankyou/";

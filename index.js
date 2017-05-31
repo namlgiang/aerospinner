@@ -66,6 +66,13 @@ function approveDomains(opts, certs, cb) {
 
 app.use(express.static('public'));
 
+app.get('/coupon/:code', function(req, res) {
+  if(req.params.code.toUpperCase() == "SECRET50")
+    res.send("1");
+  else
+    res.send("0");
+});
+
 // handles acme-challenge and redirects to http
 require('http').createServer(lex.middleware(require('redirect-https')())).listen(80, function () {
   console.log("Listening for ACME http-01 challenges on", this.address());

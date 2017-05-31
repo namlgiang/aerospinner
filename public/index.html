@@ -40,11 +40,10 @@
 
     <div class="ordernow">
       <div class="action">
-        We reached $20K!<br>
-        40% OFF
+        Shut Up
       </div>
       <div class="offer">
-        for limited orders
+        And Take My Money
       </div>
     </div>
 
@@ -109,17 +108,22 @@
     <div class="p4">
       <div class="title">
         <div class="ended">
-          Early Bird Order 50% OFF - No Longer Available
+          <span>Early Bird Order 50% OFF - No Longer Available</span>
         </div>
-        <div class="ongoing">
+        <div class="gray-line"></div>
+        <div class="ended">
+          <span>Thank you 40% OFF - No Longer Available</span>
+        </div>
+        <!-- <div class="ongoing">
           40% OFF<br>
           This is to thank you!
           <div class="desc">
             <span>We truly appreciate all of your supports! 1000+ orders was delivered in the last 2 weeks.<br>
               We want to give out 40% OFF for more orders as our way to say thank you!</span>
           </div>
-        </div>
-        <div class="countdown">
+        </div> -->
+
+        <!-- <div class="countdown">
           <div class="ib">
             <div class="day">0</div>
             day
@@ -136,7 +140,8 @@
             <div class="second">0</div>
             second
           </div>
-        </div>
+        </div> -->
+
       </div>
       <div class="preview">
           <div class="imgs">
@@ -163,9 +168,9 @@
         </div>
 
         <div class="pprice">
-          <span class="old">$37.99</span>
-          <span class="new">$22.80</span>
-          <span class="sale">40% OFF</span>
+          <!-- <span class="old">$37.99</span> -->
+          <span class="new">$37.99</span>
+          <!-- <span class="sale">40% OFF</span> -->
         </div>
 
         <ul class="pcolor">
@@ -177,11 +182,20 @@
         </ul>
 
         <div class="pquantity">
-          Quantity: <input class="quantity" value="1" type="number" min="1" max="999">
-          <span class="instock"></span>
+          <span class="label">Quantity:</span><input class="quantity" value="1" type="number" min="1" max="999">
+          <!-- <span class="instock"></span> -->
         </div>
 
-        <div id="paypal-button"></div>
+        <div class="coupon">
+          <span class="label">Coupon Code:</span><input class="coupon-text" type="text" value="" placeholder="COUPON CODE"><button type="button" class="apply">Apply</button>
+          <br>
+          <div class="coupon-note"></div>
+        </div>
+
+        <div class="pay-wrap">
+          <div class="total">Total: $37.99</div>
+          <div id="paypal-button"></div>
+        </div>
 
         <div class="note">
           <b>What you'll get:</b>

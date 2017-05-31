@@ -201,14 +201,17 @@ body {
 
     .ended {
       font-size: 14px;
+      span {
+        border: 2px solid #666;
+        padding: 5px 20px;
+        border-radius: 20px;
+        display: inline-block;
+      }
     }
-
-    .ended::after {
-      content: "";
-      display: block;
-      background: url(img/line0.png);
-      width: 10px;
-      height: 34px;
+    .gray-line {
+      width: 2px;
+      height: 20px;
+      background: #666;
       margin: 0 auto;
     }
 
@@ -378,8 +381,57 @@ body {
       }
     }
 
-    #paypal-button {
+    .coupon {
+      margin-top: 5px;
+      .coupon-text {
+        padding: 5px;
+        font-size: 14px;
+        width: 120px;
+      }
+      .apply {
+        border: none;
+        background: #000;
+        color: #fff;
+        text-transform: uppercase;
+        padding: 7px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+      .coupon-note {
+        font-size: 14px;
+        margin-top: 10px;
+        color: #0058a5;
+        font-style: italic;
+        font-weight: bold;
+      }
+      .coupon-note.error {
+        color: #666;
+      }
+    }
+
+    .pay-wrap {
+      border: 2px solid #0470ce;
       margin-top: 20px;
+      padding: 10px 20px;
+      box-sizing: border-box;
+      text-align: center;
+      background: #fff;
+      box-shadow: 0 5px 40px rgba(0,0,0,.1);
+
+      .total {
+        font-weight: 700;
+        color: #0058a5;
+        font-size: 14px;
+      }
+
+      #paypal-button {
+        margin-top: 5px;
+      }
+    }
+
+    .label {
+      width: 120px;
+      display: inline-block;
     }
 
     .note {
