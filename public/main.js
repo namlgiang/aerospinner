@@ -33,6 +33,7 @@ var _items = [
 ];
 
 function applyCoupon() {
+  ga('send', 'event', 'Apply Coupon ' + $(".coupon-text").val().toUpperCase(), 1);
   $.get('/coupon/' + $(".coupon-text").val().toUpperCase(), function(data) {
     if(data == 1) {
       $(".coupon-note").removeClass("error").text("Save 60% OFF from the second item!")
