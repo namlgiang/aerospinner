@@ -67,7 +67,7 @@ function calcTotal() {
     $(".total").text("Total: $" + _total);
   }
   else if(_promotion == 1) {
-    _total = Math.round((price + (quantity-1) * 15.20 ) * 100)/100;
+    _total = price + Math.round( (quantity-1) * 15.20 ) * 100)/100;
     _items = [
       {
       "name": colorName[color],
@@ -86,12 +86,12 @@ function calcTotal() {
     $(".total").text("Total: $" + _total + " (You save $"+  Math.round((quantity*price - _total)*100)/100  +")");
   }
   else if(_promotion == 2) {
-    _total = Math.round(quantity * price * 100 * 0.7)/100;
+    _total = Math.round( quantity * 26.59 * 100)/100;
     _items = [
       {
       "name": colorName[color],
       "quantity": quantity,
-      "price": Math.round(price * 100 * 0.7)/100,
+      "price": 26.59,
       "currency": "USD"
       }
     ];
