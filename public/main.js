@@ -36,8 +36,13 @@ function applyCoupon() {
   ga('send', 'event', 'Apply Coupon ' + $(".coupon-text").val().toUpperCase(), 1);
   $.get('/coupon/' + $(".coupon-text").val().toUpperCase(), function(data) {
     if(data == 1) {
-      $(".coupon-note").removeClass("error").text("Save 60% OFF from the second item!")
+      $(".coupon-note").removeClass("error").text("Wonderful day! Save 60% OFF from the second item!")
       _promotion = 1;
+      calcTotal();
+    }
+    else if(data == 2) {
+      $(".coupon-note").removeClass("error").text("Wonderful day! Save 30% OFF on your order!")
+      _promotion = 2;
       calcTotal();
     }
     else {
@@ -61,7 +66,7 @@ function calcTotal() {
     ];
     $(".total").text("Total: $" + _total);
   }
-  else {
+  else if(_promotion == 1) {
     _total = Math.round((price + (quantity-1) * 15.20 ) * 100)/100;
     _items = [
       {
@@ -79,6 +84,18 @@ function calcTotal() {
       "currency": "USD"
     });
     $(".total").text("Total: $" + _total + " (You save $"+  Math.round((quantity*price - _total)*100)/100  +")");
+  }
+  else if(_promotion == 2) {
+    _total = Math.round(quantity * price * 100 * 0.7)/100;
+    _items = [
+      {
+      "name": colorName[color],
+      "quantity": quantity,
+      "price": Math.round(price * 100 * 0.7)/100,
+      "currency": "USD"
+      }
+    ];
+    $(".total").text("Total: $" + _total);
   }
 }
 
