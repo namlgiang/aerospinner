@@ -67,7 +67,7 @@ function approveDomains(opts, certs, cb) {
 app.use(express.static('public'));
 
 app.get('/coupon/:code', function(req, res) {
-  if(req.params.code.toUpperCase() == "SECRET50")
+  if(req.params.code.toUpperCase() == "SECRET60")
     res.send("1");
   else
     res.send("0");
