@@ -45,6 +45,11 @@ function applyCoupon() {
       _promotion = 2;
       calcTotal();
     }
+    else if(data == 3) {
+      $(".coupon-note").removeClass("error").text("Wonderful day! Save 50% OFF on your order!")
+      _promotion = 3;
+      calcTotal();
+    }
     else {
       $(".coupon-note").addClass("error").text("Coupon Code does not exist.")
       _promotion = 0;
@@ -92,6 +97,18 @@ function calcTotal() {
       "name": colorName[color],
       "quantity": quantity,
       "price": 26.59,
+      "currency": "USD"
+      }
+    ];
+    $(".total").text("Total: $" + _total + " (You save $"+  Math.round((quantity*price - _total)*100)/100  +")");
+  }
+  else if(_promotion == 3) {
+    _total = Math.round( quantity * 19 * 100)/100;
+    _items = [
+      {
+      "name": colorName[color],
+      "quantity": quantity,
+      "price": 19,
       "currency": "USD"
       }
     ];

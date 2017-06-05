@@ -8,6 +8,8 @@ app.get('/coupon/:code', function(req, res) {
     res.send("1");
   else if(req.params.code.toUpperCase() == "SPIN30")
     res.send("2");
+  else if(req.params.code.toUpperCase() == "NORMANDREHER")
+    res.send("3");
   else
     res.send("0");
 });
