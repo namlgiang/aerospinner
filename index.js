@@ -73,6 +73,8 @@ app.get('/coupon/:code', function(req, res) {
     res.send("2");
   else if(req.params.code.toUpperCase() == "NORMANDREHER")
     res.send("3");
+  else if(req.params.code.toUpperCase() == "BYRONTODD")
+    res.send("4");
   else
     res.send("0");
 });

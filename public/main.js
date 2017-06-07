@@ -40,7 +40,7 @@ function applyCoupon() {
       _promotion = 1;
       calcTotal();
     }
-    else if(data == 2) {
+    else if(data == 2 || data == 4) {
       $(".coupon-note").removeClass("error").text("Wonderful day! Save 30% OFF on your order!")
       _promotion = 2;
       calcTotal();
