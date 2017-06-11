@@ -222,10 +222,10 @@ $(document).ready(function() {
 function renderMenu() {
   var top = $("body").scrollTop();
   var m = 0;
-  if(top > 250) m=1;
-  if(top > 750) m=2;
-  if(top > 1250) m=3;
-  if(top > 1800) m=4;
+  if(top > $(".p1").offset().top-250) m=1;
+  if(top > $(".p2").offset().top-250) m=2;
+  if(top > $(".p3").offset().top-250) m=3;
+  if(top > $(".p4").offset().top-250) m=4;
 
   if(m == 4)
     $(".ordernow").addClass("hide");
