@@ -592,11 +592,25 @@ body {
   z-index: 999;
   text-align: center;
   cursor: pointer;
+  opacity: 1;
+  animation: flash 2s infinite;
+  transition: 500ms;
 
   .offer {
     font-size: 13px;
     font-weight: bold;
   }
+}
+
+.ordernow.hide {
+  opacity: 0;
+}
+
+@keyframes flash {
+  0%   {background: #ff1749;}
+  78%  {background: #ff1749;}
+  80%  {background: #ff77b6;}
+  100% {background: #ff1749;}
 }
 
 @-webkit-keyframes rotation {
