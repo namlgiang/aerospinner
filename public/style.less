@@ -57,6 +57,26 @@ body {
       color: #fff;
     }
   }
+  .content:before, .content:after {
+    content: "";
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    box-sizing: border-box;
+  }
+  .content:before {
+    top: 0;
+    left: 0;
+    border-top: 2px solid #fffd6b;
+    border-left: 2px solid #fffd6b;
+  }
+  .content:after {
+    bottom: 0;
+    right: 0;
+    border-bottom: 2px solid #fffd6b;
+    border-right: 2px solid #fffd6b;
+  }
 }
 
 .p1 {
@@ -614,6 +634,9 @@ body {
           .desc {
             font-size: 14px;
           }
+        }
+        .content:before, .content:after {
+          display: none;
         }
 
       }
