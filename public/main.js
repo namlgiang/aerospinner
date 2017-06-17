@@ -13,15 +13,15 @@ var colorName = ["Silver", "Rose Gold", "Spring", "Midnight", "Ocean"];
 var _ = [43,24,67,41,49];
 var __ = [37,15,44,21,38];
 var ___ = [6,5,2,9,12];
-var cd = 1000 * 60 * 60 * 18;
-var price = 37.99;
+var cd = 1000 * 60 * 60 * 13;
+var price = 26.60;
 
 fbq('track', 'ViewContent', {
 value: price,
 currency: 'USD'
 });
 
-var _total = 37.99;
+var _total = 26.60;
 var _promotion = 0;
 var _items = [
   {
@@ -114,6 +114,8 @@ function calcTotal() {
     ];
     $(".total").text("Total: $" + _total + " (You save $"+  Math.round((quantity*price - _total)*100)/100  +")");
   }
+  if($(".total").text().length < 13)
+    $(".total").append("0");
 }
 
 function showTime(cd) {
@@ -141,7 +143,7 @@ $(document).ready(function() {
   if(isNaN(lastTime))
     lastTime = thisTime;
 
-  if(thisTime - lastTime > 1000 * 60 * 60 * 18 - 1000 * 60 * 24) {
+  if(thisTime - lastTime > 1000 * 60 * 60 * 13 - 1000 * 60 * 24) {
     document.cookie = "time=" + (new Date()).getTime();
     lastTime = thisTime;
   }
@@ -150,11 +152,11 @@ $(document).ready(function() {
     if(thisTime - lastTime > 600000) _ = ___;
   }
 
-  cd = 1000 * 60 * 60 * 18 - 1000 * 60 * 24 - (thisTime - lastTime);
+  cd = 1000 * 60 * 60 * 13 - 1000 * 60 * 24 - (thisTime - lastTime);
   showTime(cd);
   setInterval(function(lastTime) {
     var thisTime = (new Date()).getTime();
-    cd = 1000 * 60 * 60 * 18 - 1000 * 60 * 24 - (thisTime - lastTime);
+    cd = 1000 * 60 * 60 * 13 - 1000 * 60 * 24 - (thisTime - lastTime);
     showTime(cd);
   }, 1000, lastTime);
 
@@ -237,7 +239,7 @@ function renderMenu() {
 
 paypal.Button.render({
 
-    env: 'production', // Optional: specify 'sandbox' environment
+    env: 'sandbox', // Optional: specify 'sandbox' environment
 
     client: {
         sandbox:    'AeeQuc30epxndsZcys556s8BUccDPn7iphKvcVdJGRxEufT_J27f21i5YMLWZjiBEfNC23G5sA_fwvDr',
