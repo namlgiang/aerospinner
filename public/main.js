@@ -16,11 +16,6 @@ var ___ = [6,5,2,9,12];
 var cd = 1000 * 60 * 60 * 13;
 var price = 26.60;
 
-fbq('track', 'ViewContent', {
-value: price,
-currency: 'USD'
-});
-
 var _total = 26.60;
 var _promotion = 0;
 var _items = [
@@ -221,6 +216,8 @@ $(document).ready(function() {
   });
 });
 
+var viewcontent = false;
+
 function renderMenu() {
   var top = $("body").scrollTop();
   var m = 0;
@@ -229,8 +226,18 @@ function renderMenu() {
   if(top > $(".p3").offset().top-250) m=3;
   if(top > $(".p4").offset().top-250) m=4;
 
-  if(m == 4)
+  if(m == 4) {
     $(".ordernow").addClass("hide");
+    if(!viewcontent) {
+      viewcontent = true;
+      console.log("ViewContent");
+      ga('send', 'event', 'ViewContent', 1);
+      fbq('track', 'ViewContent', {
+      value: price,
+      currency: 'USD'
+      });
+    }
+  }
   else
     $(".ordernow").removeClass("hide");
   $(".menu span").removeClass("active");
