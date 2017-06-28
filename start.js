@@ -16,6 +16,6 @@ app.get('/coupon/:code', function(req, res) {
     res.send("0");
 });
 
-app.listen(8081, function () {
-  console.log('Example app listening on port 8081!')
+app.listen(80, function () {
+  console.log('Example app listening on port 80!')
 })
